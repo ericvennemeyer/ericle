@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+hr {
+    background-color: lightgray;
+    border: none;
+    height: 1px;
+}
+
+#game-app {
+    text-align: center;
+}
+
+#header {
+    margin-top: -25px;
+    top: 0;
+}
+
+#game-board {
+    display: grid;
+    margin: 50px auto;
+}
+
+/* #keyboard {
+    display: flex;
+    justify-content: center;
+} */
+
+.game-row {
+    margin: 5px auto;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: 50px;
+    gap: 10px;
+}
+
+.game-tile {
+    border: 2px solid lightgray;
+    font-size: xx-large;
+    font-weight: 600;
+    height: 50px;
+    width: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.key {
+    background-color: lightgray;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: 550;
+    height: 60px;
+    width: 50px;
+    margin: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+}
+
+.bottom-row > .key:nth-of-type(1) {
+    flex: 1.5;
+}
+
+.bottom-row > .key:nth-of-type(9) {
+    flex: 1.5;
+}

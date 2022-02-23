@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERICLE</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    
+    <div id="game-app">
+        <div id="header">
+            <h1>ERICLE</h1>
+            <h3>(a humble wordle clone)</h3>
+            <hr>
+        </div>
+        <div id="game-board">
+            <div class="game-row" data-active="true">
+                <div class="game-tile" data-letter="" data-status="" data-active="true"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+            </div>
+            <div class="game-row" data-active="false">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+            <div class="game-row" data-active="false">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+            <div class="game-row" data-active="false">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+            <div class="game-row" data-active="false">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+            <div class="game-row" data-active="false">
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+                <div class="game-tile"></div>
+            </div>
+        </div>
+        <div id="keyboard">
+            <div class="top-row">
+                <div data-letter="Q" data-status="" class="key">Q</div>
+                <div data-letter="W" data-status="" class="key">W</div>
+                <div data-letter="E" data-status="" class="key">E</div>
+                <div data-letter="R" data-status="" class="key">R</div>
+                <div data-letter="T" data-status="" class="key">T</div>
+                <div data-letter="Y" data-status="" class="key">Y</div>
+                <div data-letter="U" data-status="" class="key">U</div>
+                <div data-letter="I" data-status="" class="key">I</div>
+                <div data-letter="O" data-status="" class="key">O</div>
+                <div data-letter="P" data-status="" class="key">P</div>
+            </div>
+            <div class="middle-row">
+                <div data-letter="A" data-status="" class="key">A</div>
+                <div data-letter="S" data-status="" class="key">S</div>
+                <div data-letter="D" data-status="" class="key">D</div>
+                <div data-letter="F" data-status="" class="key">F</div>
+                <div data-letter="G" data-status="" class="key">G</div>
+                <div data-letter="H" data-status="" class="key">H</div>
+                <div data-letter="J" data-status="" class="key">J</div>
+                <div data-letter="K" data-status="" class="key">K</div>
+                <div data-letter="L" data-status="" class="key">L</div>
+            </div>
+            <div class="bottom-row">
+                <div data-letter="ENTER" data-status="" class="key">ENTER</div>
+                <div data-letter="Z" data-status="" class="key">Z</div>
+                <div data-letter="X" data-status="" class="key">X</div>
+                <div data-letter="C" data-status="" class="key">C</div>
+                <div data-letter="V" data-status="" class="key">V</div>
+                <div data-letter="B" data-status="" class="key">B</div>
+                <div data-letter="N" data-status="" class="key">N</div>
+                <div data-letter="M" data-status="" class="key">M</div>
+                <div data-letter="DELETE" data-status="" class="key">DELETE</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
