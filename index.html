@@ -14,7 +14,7 @@
     <div id="game-app">
         <div id="header">
             <h1>ERICLE</h1>
-            <h3>(a humble wordle clone)</h3>
+            <h3>(a barebones wordle clone)</h3>
             <hr>
         </div>
         <div id="error-modal" class="modal">
@@ -23,47 +23,47 @@
             </div>
         </div>
         <div id="game-board">
-            <div class="game-row" data-active="true" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="true"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+            <div class="game-row" data-active="false" data-animation="">
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
             <div class="game-row" data-active="false" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
             <div class="game-row" data-active="false" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
             <div class="game-row" data-active="false" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
             <div class="game-row" data-active="false" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
             <div class="game-row" data-active="false" data-animation="">
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
-                <div class="game-tile" data-letter="" data-status="" data-active="false"  data-animation=""></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
+                <div class="game-tile" data-letter="" data-temp-status="" data-status="" data-active="false"  data-animation=""><div class="tile-letter" data-animation=""></div></div>
             </div>
         </div>
         <div id="keyboard">
@@ -91,7 +91,7 @@
                 <div data-letter="L" data-status="" class="key">L</div>
             </div>
             <div class="bottom-row">
-                <div data-letter="ENTER" data-status="" class="key">ENTER</div>
+                <div data-letter="ENTER" class="key">ENTER</div>
                 <div data-letter="Z" data-status="" class="key">Z</div>
                 <div data-letter="X" data-status="" class="key">X</div>
                 <div data-letter="C" data-status="" class="key">C</div>
@@ -99,7 +99,7 @@
                 <div data-letter="B" data-status="" class="key">B</div>
                 <div data-letter="N" data-status="" class="key">N</div>
                 <div data-letter="M" data-status="" class="key">M</div>
-                <div data-letter="DELETE" data-status="" class="key">DELETE</div>
+                <div data-letter="DELETE" class="key">DELETE</div>
             </div>
         </div>
     </div>

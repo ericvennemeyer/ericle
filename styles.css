@@ -11,6 +11,18 @@ hr {
     width: 50%;
 }
 
+div[data-status="correct"] {
+    background-color: rgb(87, 172, 87);
+}
+
+div[data-status="present"] {
+    background-color: rgb(214, 193, 71);
+}
+
+div[data-status="wrong"] {
+    background-color: rgb(150, 143, 143);
+}
+
 #game-app {
     text-align: center;
 }
@@ -72,6 +84,11 @@ hr {
     border: 2px solid rgb(121, 116, 116);
 }
 
+.game-tile[data-status]:not([data-status=""]) {
+    border: 2px solid transparent;
+    color: white;
+}
+
 .game-tile[data-animation="pop"] {
     animation: pop .1s forwards;
 }
@@ -85,6 +102,25 @@ hr {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+.game-tile[data-animation="flip"] {
+    animation: flip .6s;
+    animation-timing-function: linear;
+}
+
+.tile-letter[data-animation="flip"] {
+    animation: flip .6s;
+    animation-timing-function: linear;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(180deg);
     }
 }
 
