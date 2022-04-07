@@ -9,8 +9,8 @@ const SOLUTION_WORDS = ["cigar","rebut","sissy","humph","awake","blush","focal",
 let CURR_WORD = "";
 // Global var to store user guess as it is being entered
 let CURR_GUESS = "";
-// Global var to track index in master word list
-let WORD_INDEX = 0;
+// Global var to track word index
+let WORD_INDEX = "";
 // Global var to hold game state (true/false)
 let IS_PLAYING = true;
 // Global var to hold message modal
@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Query for message modal
     MODAL = document.querySelector(".modal-content");
+
+    // Check if wordIndex is available in local storage. If not, set local storage = default value
+    if (!localStorage.getItem('wordIndex')) {
+        localStorage.setItem('wordIndex', '0');
+    }
 
     // Initialize new game
     startGame();
@@ -138,8 +143,6 @@ function evaluateWord() {
     const tilesArray = Array.from(tiles);
     // Higher scoped var for currenty evaluated letter
     let currLetter = "";
-
-    console.log("CURR_GUESS: ", CURR_GUESS.toLowerCase());
     
     // Make sure submitted guess is 5 chars long
     if (CURR_GUESS.length < 5) {
@@ -169,6 +172,9 @@ function evaluateWord() {
             }
 
             animateWin(tilesArray);
+
+            // Increment value of WORD_INDEX in local storage
+            localStorage.setItem('wordIndex', ++WORD_INDEX);
 
         } else {
             // Copy CURRWORD to temp var for comparison below
@@ -278,12 +284,14 @@ function displayMessage(message) {
 
 function startGame() {
 
+    // Assign current local storage value of wordIndex to variable wordIndex, converted to integer
+    WORD_INDEX = parseInt(localStorage.getItem('wordIndex'), 10);
+    
     // Set solution word for this game
     CURR_WORD = SOLUTION_WORDS[WORD_INDEX].toUpperCase();
-    // Increment index for next word
-    WORD_INDEX++;
 
     console.log("Current word: ", CURR_WORD);
+    console.log("Current wordIndex: ", WORD_INDEX);
 
     // Set IS_PLAYING to true
     IS_PLAYING = true;
