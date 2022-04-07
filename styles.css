@@ -125,13 +125,9 @@ div[data-status="wrong"] {
 }
 
 .game-tile[data-animation="jump"] {
-    animation: jump .3s;
+    animation: jump .4s;
     animation-timing-function: linear;
 }
-
-/* .game-tile[data-animation="jump"]:nth-child(1) {
-    animation-delay: 0ms;
-} */
 
 .game-tile[data-animation="jump"]:nth-child(2) {
     animation-delay: 80ms;
@@ -154,7 +150,7 @@ div[data-status="wrong"] {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-7%);
+        transform: translateY(-9%);
     }
     100% {
         transform: translateY(0);
