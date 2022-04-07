@@ -132,6 +132,8 @@ function evaluateWord() {
     const tiles = activeRow.querySelectorAll('.game-tile');
     // Create array from tiles list
     const tilesArray = Array.from(tiles);
+    // Higher scoped var for currenty evaluated letter
+    let currLetter = "";
     
     // Make sure submitted guess is 5 chars long
     if (CURR_GUESS.length < 5) {
@@ -140,84 +142,87 @@ function evaluateWord() {
     } else {
         // If current guess is correct...
         if (CURR_GUESS == CURR_WORD) {
-            for (let i = 0; i < 5; i++) {
-                const currLetter = tilesArray[i].dataset.letter;
+            
+            IS_PLAYING = false;
 
+            for (let i = 0; i < 5; i++) { 
                 // Set temp color/status 
                 tilesArray[i].dataset.tempStatus = "correct";
                     
                 // Set color/status for key in virtual keyboard
-                document.querySelector(`#keyboard div[data-letter=${currLetter}]`).dataset.status = "correct";
+                setKeyColor(tilesArray[i].dataset.letter, "correct");
 
                 animateReveal(tilesArray, i);
             }
 
-            displayMessage("You Win!");
-            IS_PLAYING = false;
+            animateWin(tilesArray);
 
         } else {
-            // Go through each letter of guess and compare to solution (avoids double-counting letters):
-
             // Copy CURRWORD to temp var for comparison below
             let tempWord = CURR_WORD;
 
+            // Go through each letter of guess and look for "correct" letters
             for (let i = 0; i < 5; i++) {
                 // Store current letter of CURRGUESS string in var currLetter
-                const currLetter = tilesArray[i].dataset.letter;
+                currLetter = tilesArray[i].dataset.letter;
+
                 // If the guessed letter is in the right position...
                 if (currLetter == tempWord[i]) {
                     // Remove "correct" letter from tempWord
-                    tempWord = tempWord.replace(currLetter, " ");
+                    tempWord = removeCharAt(tempWord, i);
 
-                    // Set temp color/status 
+                    // Remove "correct" letter from game tile
+                    tilesArray[i].dataset.letter = " ";
+
+                    // Set temp color/status of game tile
                     tilesArray[i].dataset.tempStatus = "correct";
                     
                     // Set color/status for key in virtual keyboard
-                    document.querySelector(`#keyboard div[data-letter=${currLetter}]`).dataset.status = "correct";
+                    setKeyColor(currLetter, "correct");
                 }
-                // If the guessed letter is in the word, but in a different position...
-                else if (tempWord.includes(currLetter)) {
-                    // Remove "present" letter from tempWord
-                    tempWord = tempWord.replace(currLetter, " ");
 
-                    tilesArray[i].dataset.tempStatus = "present";
-                    document.querySelector(`#keyboard div[data-letter=${currLetter}]`).dataset.status = "present";
-                }
-                // If the guessed letter is not in the word...
-                else {
-                    tilesArray[i].dataset.tempStatus = "wrong";
-                    document.querySelector(`#keyboard div[data-letter=${currLetter}]`).dataset.status = "wrong";
-                }
-                
                 animateReveal(tilesArray, i);
             }
+
+            // Go through each letter of guess and look for "present" and "wrong" letters
+            for (let i = 0; i < 5; i++) {
+                // Skip letters that were already exact matches and are now blank
+                if (tilesArray[i].dataset.letter != " " ) {
+                    // Store current letter of CURRGUESS string in var currLetter
+                    currLetter = tilesArray[i].dataset.letter;
+
+                    // If the guessed letter is in the word, but in the wrong position...
+                    if (tempWord.includes(currLetter)) {
+                        // Remove "present" letter from tempWord
+                        tempWord = tempWord.replace(currLetter, " ");
+                
+                        // Set temp color/status of game tile
+                        tilesArray[i].dataset.tempStatus = "present";
+
+                        // Set color/status for key in virtual keyboard
+                        setKeyColor(currLetter, "present");
+                    }
+                    // else, the guessed letter is not in the word
+                    else {
+                        // Set temp color/status of game tile
+                        tilesArray[i].dataset.tempStatus = "wrong";
+
+                        // Set color/status for key in virtual keyboard
+                        setKeyColor(currLetter, "wrong");
+                    }
+                    
+                    animateReveal(tilesArray, i);
+                }
+            }
+
+            // Eval complete, reset to next row
+            carriageReturn();
         }
-
-        // Reset to next row:
-        // Clear CURRGUESS
-        CURR_GUESS = "";
-
-        // Set currently active row state to 'false'
-        activeRow.dataset.active = 'false';
-        
-        // If this is not the last row...
-        if (activeRow.nextElementSibling) {
-            // Set the next row and next row's first game tile active states to 'true'
-            const nextRow = activeRow.nextElementSibling;
-            nextRow.dataset.active = 'true';
-            const firstTile = nextRow.firstElementChild;
-            firstTile.dataset.active = 'true';
-        } else {
-            // Player loses. On click, clear the game board and start back at the top
-            displayMessage("You Lose");
-            IS_PLAYING = false;
-        }
-
     }
-
 }
 
 function animateReveal(tilesArray, index) {
+
     if (index > 0) {
         tilesArray[index - 1].firstElementChild.addEventListener('animationend', () => {
             modifyTileAttributes(tilesArray, index);
@@ -228,11 +233,26 @@ function animateReveal(tilesArray, index) {
 }
 
 function modifyTileAttributes(tilesArray, index) {
+
     tilesArray[index].dataset.animation = "flip";
     tilesArray[index].firstElementChild.dataset.animation = "flip";
     setTimeout(() => {
         tilesArray[index].dataset.status = tilesArray[index].dataset.tempStatus;
     }, 275);
+}
+
+function animateWin(tilesArray) {
+    
+    tilesArray[4].firstElementChild.addEventListener('animationend', () => {
+
+        if (!IS_PLAYING) {
+            for (let i = 0; i < 5; i++) {
+                tilesArray[i].dataset.animation = "jump";
+            }
+    
+            displayMessage("You Win!");
+        }
+    });
 }
 
 function displayMessage(message) {
@@ -241,7 +261,6 @@ function displayMessage(message) {
     MODAL.querySelector(".modal-text").textContent = message;
     // Make modal visible
     MODAL.style.display = 'block';
-
 }
 
 function startGame() {
@@ -280,7 +299,6 @@ function startGame() {
     const firstRow = document.querySelector(".game-row");
     firstRow.dataset.active = 'true';
     firstRow.firstElementChild.dataset.active = 'true';
-
 }
 
 function getActiveRow() {
@@ -289,6 +307,49 @@ function getActiveRow() {
         return document.querySelector(".game-row[data-active='true']");
     } else {
         return false;
+    } 
+}
+
+function removeCharAt(string, index) {
+
+    if (index > string.length - 1) {
+        return string;
     }
+    return string.substring(0, index) + " " + string.substring(index + 1);
+}
+
+function carriageReturn() {
+
+    // Clear CURRGUESS
+    CURR_GUESS = "";
+
+    // Set currently active row state to 'false'
+    const activeRow = getActiveRow();
+    activeRow.dataset.active = 'false';
     
+    // If this is not the last row...
+    if (activeRow.nextElementSibling) {
+        // Set the next row and next row's first game tile active states to 'true'
+        const nextRow = activeRow.nextElementSibling;
+        nextRow.dataset.active = 'true';
+        const firstTile = nextRow.firstElementChild;
+        firstTile.dataset.active = 'true';
+    } else {
+        // Player loses. On click, clear the game board and start back at the top
+        displayMessage("You Lose");
+        IS_PLAYING = false;
+    }
+}
+
+function setKeyColor(currLetter, newStatus) {
+
+    // Get virtual key that corresponds to current letter
+    const virtualKey = document.querySelector(`#keyboard div[data-letter=${currLetter}]`);
+
+    // Ensure that color/status is only updated "upwards", i.e. from blank to "present", and "present" to "correct"
+    if (virtualKey.dataset.status == "" || (virtualKey.dataset.status == "present" && newStatus == "correct")) {
+        
+        virtualKey.dataset.status = newStatus;
+    
+    }
 }
