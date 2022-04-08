@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Query for message modal
     MODAL = document.querySelector(".modal-content");
 
-    // Check if wordIndex is available in local storage. If not, set local storage = default value
+    // Check if wordIndex is available in local storage. If not, set local storage = 0
     if (!localStorage.getItem('wordIndex')) {
         localStorage.setItem('wordIndex', '0');
     }
@@ -359,7 +359,7 @@ function carriageReturn() {
         const firstTile = nextRow.firstElementChild;
         firstTile.dataset.active = 'true';
     } else {
-        // Player loses. On click, clear the game board and start back at the top
+        // Player loses. On key input, game will restart
         displayMessage("You Lose");
         IS_PLAYING = false;
     }

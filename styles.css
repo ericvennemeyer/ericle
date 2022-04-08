@@ -4,6 +4,10 @@ body {
     justify-content: center;
 }
 
+h3 {
+    margin: 3px auto;
+}
+
 hr {
     background-color: lightgray;
     border: none;
@@ -12,11 +16,11 @@ hr {
 }
 
 div[data-status="correct"] {
-    background-color: rgb(87, 172, 87);
+    background-color: rgb(86, 157, 86);
 }
 
 div[data-status="present"] {
-    background-color: rgb(214, 193, 71);
+    background-color: rgb(203, 183, 70);
 }
 
 div[data-status="wrong"] {
@@ -29,17 +33,17 @@ div[data-status="wrong"] {
 
 #header {
     margin-top: -15px;
-    margin-bottom: 50px; 
+    margin-bottom: 30px; 
     top: 0;
 }
 
 #game-board {
     display: grid;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .modal {
-    margin: 50px auto;
+    margin: 10px auto;
     height: 50px;
     display: flex;
     align-items: center;
