@@ -360,7 +360,8 @@ function carriageReturn() {
         firstTile.dataset.active = 'true';
     } else {
         // Player loses. On key input, game will restart
-        displayMessage("You Lose");
+        const word = '"' + CURR_WORD.slice(0,1) + CURR_WORD.slice(1, CURR_WORD.length).toLowerCase() + '"';
+        displayMessage(`Sorry baby. The word was ${word}.`);
         IS_PLAYING = false;
     }
 }
